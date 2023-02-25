@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Mom!</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        text-align: center;
+        font-size: 24px;
+        padding: 0px;
+        z-index: 2;
+      }
+
+      canvas {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 3;
+      }
+      
+      #birthday-message {
+        display: none;
+        background-color: pink;
+        color: white;
+        font-size: 48px;
+        padding: 50px;
+        position: relative;
+        z-index: 2;
+      }
+
+
+      #birthday-message img {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 20px;
+      }
+
+      #light-switch {
+        border-radius: 5%;
+        cursor: pointer;
+        max-width: 100%;
+        position: absolute;
+        bottom: 120px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+      }
+
+      @media screen and (min-width: 480px) {
+        body {
+          font-size: 16px;
+          padding-top: 50px;
+        }
+        #light-switch {
+          bottom: 5px;
+        }
+        #birthday-message {
+          font-size: 36px;
+          padding: 20px;
+        }
+      }
+
+      .pic {
+        width: 250px;
+      }
+
+      .gif {
+        display: flex;
+        justify-content: center;
+        max-width: 100%;
+        height: auto;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <canvas id="my-canvas" style="display: none"></canvas>
+    <h1 id="turn-on-message">Turn on the lights to reveal your surprise!</h1>
+    <img id="light-switch" src="img/light-switch-off.png" onclick="toggleLights()">
+    <div id="birthday-message">
+      <div>
+        <h2>Happy Birthday, Mom!</h2>
+        <p>
+          lkafsjdlkjasldkfjlsadjf
+        </p>
+      </div>
+      <div>
+        <img  class="pic" src="img/Dylim.jpg">
+      </div>
+      <div class="gif">
+        <img src="img/balloons.gif">
+        <img src="img/confetti.gif">
+        <img src="img/balloons.gif">
+      </div> 
+    </div>
+    
+    <script src="script.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+      function toggleLights() {
+        var lightSwitch = document.getElementById("light-switch");
+        var birthdayMessage = document.getElementById("birthday-message");
+        var turnOnMessage = document.getElementById("turn-on-message");
+        var body = document.querySelector('body');
+        var canvas = document.querySelector('canvas');
+        var confettiSettings = { target: 'my-canvas' };
+        var confetti = new ConfettiGenerator(confettiSettings);
+
+        if (lightSwitch.src.match("light-switch-off.png")) {
+          lightSwitch.src = "img/light-switch-on.png";
+          birthdayMessage.style.display = "block";
+          turnOnMessage.style.display = "none";
+          body.style.backgroundColor = "pink";
+          canvas.style.display = "inline";
+          confetti.render();
+        } else {
+          lightSwitch.src = "img/light-switch-off.png";
+          birthdayMessage.style.display = "none";
+          turnOnMessage.style.display = "block";
+          body.style.backgroundColor = "black";
+          canvas.style.display = "none";
+          confetti.stop();
+        }
+      }
+    </script>
+  </body>
+</html>
