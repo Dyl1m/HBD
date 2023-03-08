@@ -42,7 +42,8 @@
       
       .mom {
         color: black;
-        margin-bottom: 20px;
+        text-shadow: 3px 3px rgb(255, 215, 0);
+        margin-bottom: 30px;
       }
 
       .light-switch {
@@ -56,7 +57,7 @@
       
       #birthday-message {
         display: none;
-        background-color: pink;
+        background-color: rgb(255, 203, 255);
         color: white;
         font-size: 48px;
         position: relative;
@@ -89,7 +90,6 @@
         justify-content: center;
         width: 100%;
         height: auto;
-        margin-bottom: 20px;
       }
 
       .border {
@@ -112,6 +112,7 @@
 
       .pic {
         width: 50%;
+        margin-bottom: 20px;
       }
     </style>
   </head>
@@ -127,15 +128,21 @@
         <img class="border" src="img/—Pngtree—confetti and balloon gold light_6228166.png">
         <img class="hbd" src="img/—Pngtree—3d happy 50th birthday lettering_5134130.png">
       </div>
-
+      <h1 class="mom">MOM</h1>
       <div class="image">
         <img  class="pic" src="img/IMG-0077.jpg">
       </div>
 
       <div  class="msg">
-        <h3 class="mom">MOM</h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <i>
+            Life starts at 50.
+          </i>
+        </p>
+        <p>
+          <i>
+            With all of life's trials and tribulations behind you, enjoy all the dues you've paid, relax, smell the flowers and appreciate the finer things in life.
+          </i> 
         </p>
       </div>       
     </div>
@@ -155,7 +162,7 @@
           lightSwitch.style.display = "none";
           birthdayMessage.style.display = "block";
           turnOnMessage.style.display = "none";
-          body.style.backgroundColor = "pink";
+          body.style.backgroundColor = "rgb(255, 203, 255)";
           canvas.style.display = "inline";
           confetti.render();
         } else {
