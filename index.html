@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday MOM</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      p {
+        font-size: 40px;
+        font-weight: bold;
+        color: black;
+      }
+
+      body {
+        background-color: black;
+        color: white;
+        text-align: center;
+        font-size: 24px;
+        z-index: 2;
+        margin-bottom: 100px;
+      }
+
+      #my-canvas {
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 3;
+      }
+
+      .msg {
+        margin-top: 40px;
+        text-shadow: 3px 3px rgb(255, 215, 0)
+      }
+      
+      .mom {
+        color: black;
+        margin-bottom: 20px;
+      }
+
+      .light-switch {
+        position: absolute;
+        width: auto;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 0;
+      }
+      
+      #birthday-message {
+        display: none;
+        background-color: pink;
+        color: white;
+        font-size: 48px;
+        position: relative;
+        z-index: 2;
+      }
+
+      #light-switch {
+        border-radius: 5%;
+        cursor: pointer;
+        max-width: 100%;
+        position: absolute;
+        bottom: 120px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+      }
+
+      @media screen and (min-width: 480px) {
+        body {
+          font-size: 16px;
+        }
+
+        #birthday-message {
+          font-size: 36px;
+        }
+      }
+
+      .header {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+      }
+
+      .border {
+        width: 100%;
+        position: relative;
+      }
+
+      .hbd {
+        position: absolute;
+        width: 100%;
+        top: 60px;
+      }
+
+      .image {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        }
+
+      .pic {
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="my-canvas"></canvas>
+    <h1 id="turn-on-message">Turn on the lights to reveal your surprise!</h1>
+    <div class="light">
+      <img id="light-switch" src="img/light-switch-off.png" onclick="toggleLights()">
+    </div>
+    
+    <div id="birthday-message">
+      <div class="header">
+        <img class="border" src="img/—Pngtree—confetti and balloon gold light_6228166.png">
+        <img class="hbd" src="img/—Pngtree—3d happy 50th birthday lettering_5134130.png">
+      </div>
+
+      <div class="image">
+        <img  class="pic" src="img/IMG-0077.jpg">
+      </div>
+
+      <div  class="msg">
+        <h3 class="mom">MOM</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </div>       
+    </div>
+    
+    <script src="script.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+      function toggleLights() {
+        var lightSwitch = document.getElementById("light-switch");
+        var birthdayMessage = document.getElementById("birthday-message");
+        var turnOnMessage = document.getElementById("turn-on-message");
+        var body = document.querySelector('body');
+        var canvas = document.querySelector('canvas');
+        var confettiSettings = { target: 'my-canvas' };
+        var confetti = new ConfettiGenerator(confettiSettings);
+
+        if (lightSwitch.src.match("light-switch-off.png")) {
+          lightSwitch.style.display = "none";
+          birthdayMessage.style.display = "block";
+          turnOnMessage.style.display = "none";
+          body.style.backgroundColor = "pink";
+          canvas.style.display = "inline";
+          confetti.render();
+        } else {
+          birthdayMessage.style.display = "none";
+          turnOnMessage.style.display = "block";
+          body.style.backgroundColor = "black";
+          canvas.style.display = "none";
+          confetti.stop();
+        }
+      }
+    </script>
+  </body>
+</html>
